@@ -14,7 +14,7 @@ export default class App extends React.Component {
             title: 'HOME',
             headerStyle: {
               height: 120,
-              backgroundColor: 'red'
+              backgroundColor: '#38A1CF'
             },
             headerTitleStyle: {
               color: '#ffffff',
@@ -26,7 +26,7 @@ export default class App extends React.Component {
             title: 'Sign In',
             headerStyle: {
               height: 120,
-              backgroundColor: 'red'
+              backgroundColor: '#38A1CF'
             },
             headerTitleStyle: {
               color: '#ffffff',
@@ -38,7 +38,7 @@ export default class App extends React.Component {
             title: 'Sign Up',
             headerStyle: {
               height: 120,
-              backgroundColor: 'red'
+              backgroundColor: '#38A1CF'
             },
             headerTitleStyle: {
               color: '#ffffff',
