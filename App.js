@@ -10,9 +10,41 @@ export default class App extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Home" component={Home} options={{
+            title: 'HOME',
+            headerStyle: {
+              height: 120,
+              backgroundColor: 'red'
+            },
+            headerTitleStyle: {
+              color: '#ffffff',
+              fontSize: 30,
+
+            }
+          }} />
+          <Stack.Screen name="SignIn" component={SignIn} options={{
+            title: 'Sign In',
+            headerStyle: {
+              height: 120,
+              backgroundColor: 'red'
+            },
+            headerTitleStyle: {
+              color: '#ffffff',
+              fontSize: 30,
+
+            }
+          }} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{
+            title: 'Sign Up',
+            headerStyle: {
+              height: 120,
+              backgroundColor: 'red'
+            },
+            headerTitleStyle: {
+              color: '#ffffff',
+              fontSize: 30,
+            }
+          }} />
         </Stack.Navigator>
       </NavigationContainer>
     );
