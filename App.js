@@ -132,9 +132,58 @@ class SignIn extends React.Component {
 }
 
 class SignUp extends React.Component {
+
+  constructor() {
+    super()
+    this.state = {
+      name: '',
+      email: '',
+      pwd: '',
+    }
+  }
+
+  signUp = () => {
+    const { name, email, pwd } = this.state
+    firebase.auth().createUserWithEmailAndPassword(email, pwd).then((auth) => {
+      auth.user.updateProfile({
+        name: name,
+        email: email,
+        password: pwd
+      })
+      this.props.navigation.replace('Home')
+    })
+  }
   render() {
     return (
-      <Text>HOME</Text>
+      <View>
+        <View style={styles.form}>
+          <TextInput
+            placeholder="Name"
+            placeholderTextColor="#D0CBD4"
+            keyboardType="email-address"
+            autoCapitalize={'none'}
+            style={styles.input}
+            onChangeText={name => this.setState({ name })} />
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#D0CBD4"
+            keyboardType="email-address"
+            autoCapitalize={'none'}
+            style={styles.input}
+            onChangeText={email => this.setState({ email })} />
+          <TextInput placeholder="Password"
+            placeholderTextColor="#D0CBD4"
+            keyboardType="default"
+            secureTextEntry={true}
+            autoCapitalize={'words'}
+            style={styles.input}
+            onChangeText={pwd => this.setState({ pwd })} />
+        </View>
+        <TouchableOpacity onPress={() => this.signUp()}>
+          <Text style={styles.submitText}>Register</Text>
+        </TouchableOpacity>
+        <Button title="Already have an account?" onPress={() => this.props.navigation.replace('SignIn')} />
+      </View>
     );
   }
 }
