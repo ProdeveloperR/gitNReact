@@ -52,6 +52,25 @@ export default class App extends React.Component {
 }
 
 class Home extends React.Component {
+
+  componentDidMount = () => {
+    var firebaseConfig = {
+      apiKey: "AIzaSyCjm2q9UMYG9PBwPAUOJNgcVQqYtKgoRFI",
+      authDomain: "imessage-7d172.firebaseapp.com",
+      databaseURL: "https://imessage-7d172.firebaseio.com",
+      projectId: "imessage-7d172",
+      storageBucket: "imessage-7d172.appspot.com",
+      messagingSenderId: "620960173583",
+      appId: "1:620960173583:web:1bae966d4b5bccf5ef5d7a",
+      measurementId: "G-81VRKJ3V3V"
+    };
+    // Initialize Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+      // console.log(firebaseConfig)
+    }
+  }
+
   render() {
     return (
       <View>
@@ -72,20 +91,22 @@ class SignIn extends React.Component {
     }
   }
 
-  signUp = () => {
+  signIn = () => {
     const { name, email, pwd } = this.state;
-
+    firebase.auth().signInWithEmailAndPassword(email, pwd).then((auth) => {
+      auth.user.updateProfile({
+        displayName: name,
+        email: email,
+        password: pwd
+      }).then(() => {
+        this.props.navigation.navigate('Home')
+      })
+    })
   }
   render() {
     return (
       <View>
         <View style={styles.form}>
-          <TextInput placeholder="Name"
-            placeholderTextColor="#D0CBD4"
-            keyboardType="default"
-            autoCapitalize={'words'}
-            style={styles.input}
-            onChangeText={name => this.setState({ name })} />
           <TextInput
             placeholder="Email"
             placeholderTextColor="#D0CBD4"
@@ -101,7 +122,7 @@ class SignIn extends React.Component {
             style={styles.input}
             onChangeText={pwd => this.setState({ pwd })} />
         </View>
-        <TouchableOpacity onPress={() => this.signUp()}>
+        <TouchableOpacity onPress={() => this.signIn()}>
           <Text style={styles.submitText}>Submit</Text>
         </TouchableOpacity>
         <Button title="Create an account?" onPress={() => this.props.navigation.replace('SignUp')} />
