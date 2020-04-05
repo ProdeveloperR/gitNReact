@@ -9,4 +9,4 @@ var firebaseConfig = {
     measurementId: "G-81VRKJ3V3V"
 };
 module.exports.firebaseConfig = firebaseConfig
-//first 'firebaseConfig' is a variable you can name it anything 
+//first 'firebaseConfig' is a variable you can name it anything
