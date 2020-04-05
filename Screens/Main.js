@@ -5,7 +5,6 @@ import SignIn from '../Screens/SignIn'
 import SignUp from '../Screens/SignUp'
 import Home from '../Screens/Home'
 import * as firebase from 'firebase'
-import { firebaseConfig } from '../firebase'
 const Stack = createStackNavigator()
 
 
