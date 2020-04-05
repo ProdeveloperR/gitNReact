@@ -20,6 +20,8 @@ export default class SignUp extends React.Component {
                 password: pwd
             })
             this.props.navigation.replace('Home')
+        }).catch((e) => {
+            Alert.Alert(e.message)
         })
     }
     render() {

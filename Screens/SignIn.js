@@ -20,8 +20,10 @@ export default class SignIn extends React.Component {
                 email: email,
                 password: pwd
             }).then(() => {
-                this.props.navigation.navigate('Home')
+                this.props.navigation.replace('Home')
             })
+        }).catch((e) => {
+            Alert.alert(e.message)
         })
     }
     render() {
